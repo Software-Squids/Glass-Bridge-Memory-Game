@@ -2,6 +2,9 @@
   "name": "glass-bridge-memory-game",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.14.15"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
