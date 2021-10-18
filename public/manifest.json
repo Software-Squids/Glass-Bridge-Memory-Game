@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Glass Bridge - Memory Game",
+  "name": "Glass Bridge - Memory Game, inspired from TV Show, Squid Game",
   "icons": [
     {
       "src": "favicon.ico",
