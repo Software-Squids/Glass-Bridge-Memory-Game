@@ -2,22 +2,18 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Bridge from './GlassBridge/Bridge';
+
 function App() {
+  // Default values (will relocate)
+  const rows = 10;
+  const cols = 2;
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Bridge rows={rows} cols={cols}></Bridge>
       </header>
     </div>
   );
