@@ -1,20 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-
-import Bridge from './GlassBridge/Bridge';
+import { GlassBridge } from './pages/GlassBridge'
+import { Scoreboard } from './pages/Scoreboard/Scoreboard'
 
 function App() {
-  // Default values (will relocate)
-  const rows = 10;
-  const cols = 2;
+  // would make a useState
+  const [activePage, setActivePage] = useState("scoreboard")
+
+
+  const getActivePage = (page) => {
+    switch(page) {
+      case "scoreboard":
+        return <Scoreboard />
+      case "glass-bridge":
+        return <GlassBridge />
+      default:
+        return <>Page Not Found</>
+    }
+  }
+
+  const toggleScoreboard = () => setActivePage("scoreboard");
+
+  const toggleGlassBridge = () => setActivePage("glass-bridge");
+  
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Bridge rows={rows} cols={cols}></Bridge>
-      </header>
+      <nav className="navbar">
+        <button onClick={toggleScoreboard}>Scoreboard</button>
+        <button onClick={toggleGlassBridge}>Glass Bridge</button>
+      </nav>
+      {getActivePage(activePage)}
     </div>
   );
 }
