@@ -22,7 +22,7 @@ function Bridge(props) {
         <Row key={"row_" + ri}>
           {row.map((col, ci) => (
             <Col key={"col_" + ci}>
-              <Pane name={"pane_" + ri + "_" + ci} value={col}></Pane>
+              <Pane name={"pane_" + ri + "_" + ci} value={col} selected="false" />
             </Col>
           ))}
         </Row>

@@ -1,35 +1,31 @@
 import React from 'react';
+import { atom, useRecoilState } from 'recoil';
+import styled from 'styled-components';
 
-// TODO: Nico Suggestions - Separate state from rendering
-// Context API
-// Recoil state Library
-// Global State
+
+/* currently updates all tiles when one is clicked */
+const selectedState = atom({
+  key: 'selectedState',
+  default: false
+});
+
+const StyledPane = styled.div`
+  background-color: ${props => props.selected ? "pink" : "white"};
+`;
 
 
 function Pane(props) {
+  const [selected, setSelected] = useRecoilState(selectedState);
 
-  /* Leftovers from old state management */
-
-  /*this.state = {
-    // TODO: set state based on position and this.props.selected.
-    inPath : false,
-    selected: false,
-    color: "#f6feff"
-  }*/
-
-  /*handleClick = () => {
-    // TODO: disable rows above the current rows, enable row above when a valid move is entered. 
-
-    setState({
-      selected: true,
-      color: 'pink'
-    });
-  }*/
+  const onSelected = (event) => {
+    setSelected(true);
+  }
 
   return (
-    <button className="pane" name={props.name} value={props.value}>
+    <StyledPane className="pane" name={props.name} value={props.value}
+            onClick={onSelected} selected={selected}>
       {props.value}
-    </button>    // temporary, for debugging
+    </StyledPane>    // temporary, for debugging
   );
 }
 export default Pane;

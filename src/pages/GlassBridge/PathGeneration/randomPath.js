@@ -21,8 +21,6 @@ export function randomPath(rows, cols) {
       validTiles = [selectedPane - 1, selectedPane, selectedPane + 1];
     }
 
-    console.log("i: " + i + "\tvalidTiles: " + validTiles);
-
     selectedPane = Math.floor(
       (Math.random() * (validTiles[validTiles.length - 1] + 1)
       + validTiles[0])
