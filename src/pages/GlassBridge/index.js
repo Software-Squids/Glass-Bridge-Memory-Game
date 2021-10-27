@@ -1,12 +1,12 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import Bridge from './Bridge';
+import { rows, cols } from '../../states';
 
 
 export const GlassBridge = () => {
-  const rows = 10;
-  const cols = 2;
 
   return (
-    <Bridge rows={rows} cols={cols}></Bridge>
+    <Bridge rows={useRecoilValue(rows)} cols={useRecoilValue(cols)}></Bridge>
   )
 }

@@ -1,23 +1,17 @@
-import React from 'react';
-import { atom, useRecoilState } from 'recoil';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 
-/* currently updates all tiles when one is clicked */
-const selectedState = atom({
-  key: 'selectedState',
-  default: false
-});
-
-const StyledPane = styled.div`
+const StyledPane = styled.button`
   background-color: ${props => props.selected ? "pink" : "white"};
 `;
 
 
 function Pane(props) {
-  const [selected, setSelected] = useRecoilState(selectedState);
+  // const [selected, setSelected] = useRecoilState(selectedState);
+  const [selected, setSelected] = useState(false);
 
-  const onSelected = (event) => {
+  const onSelected = () => {
     setSelected(true);
   }
 
