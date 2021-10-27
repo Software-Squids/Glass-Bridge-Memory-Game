@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container as Grid, Row, Col } from 'react-grid-system';
+import styled from 'styled-components';
 
 import Pane from './Pane';
 import { randomPath } from './PathGeneration/randomPath';
 
-class Bridge extends Component {
-  constructor(props) {
-    super(props);
 
-    this.matrix = randomPath(this.props.rows, this.props.cols);
 
-    this.state = {
-      moves: 0
-    };
-  }
+const StyledBridge = styled.div`
+/* CSS goes here */
+`
 
-  render() {
-    return (
+function Bridge(props) {
+
+  var matrix = randomPath(props.rows, props.cols);
+
+  return (
+    <StyledBridge>
       <Grid>
-      {this.matrix.map((row, ri) => (
+      {matrix.map((row, ri) => (
         <Row key={"row_" + ri}>
           {row.map((col, ci) => (
-            <Col sm={4} key={"col_" + ci}>
+            <Col key={"col_" + ci}>
               <Pane name={"pane_" + ri + "_" + ci} value={col}></Pane>
             </Col>
           ))}
         </Row>
       ))}
     </Grid>
-    );
-  }
+  </StyledBridge>
+  );
 }
 export default Bridge;
