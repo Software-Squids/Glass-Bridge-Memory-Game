@@ -31,4 +31,9 @@ const hasLost = atom({
   default: false
 });
 
-export { rows, cols, round, turn, twoPlayer, hasLost };
+const board = atom({
+  key: 'board',
+  default: 1
+});
+
+export { rows, cols, round, turn, twoPlayer, hasLost, board };
