@@ -3,6 +3,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import Bridge from './Bridge'
+import { BackArrow } from '../../components';
 import { rows, cols, round, board } from '../../states';
 
 
@@ -13,7 +14,8 @@ const StyledGame = styled.div`
 function GamePage() {
   return (
     <StyledGame key={useRecoilValue(board)}>
-      <Bridge rows={useRecoilValue(rows) + useRecoilValue(round) - 1}
+      <BackArrow />
+      <Bridge rows={useRecoilValue(rows) + (useRecoilValue(round) - 1)}
               cols={useRecoilValue(cols)}></Bridge>
       Round: {useRecoilValue(round)}
     </StyledGame>

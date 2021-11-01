@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { SquidText } from '../../components';
+
 
 const StyledHome = styled.div`
   /* Temporary to render vertically, CSS goes here! */
@@ -12,6 +14,7 @@ const StyledHome = styled.div`
 `
 
 /* /Scores and /Help are currently empty */
+// ADD: <SquidText>Glass Bridge</SquidText> and make it work
 function Home() {
   return (
     <StyledHome>
