@@ -1,15 +1,16 @@
-import React, { Text } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 
-const StyledText = styled.text`
+// Does not have an accent color like on figma. I don't know how to do that
+const StyledText = styled.h1`
 font-family: 'GameOfSquids';
-color: 'pink';
 `;
 
 function SquidText(props) {
   return (
-    <Text>{props.text}</Text>
+    <StyledText>{props.children}</StyledText>
   );
 }
+
 export { SquidText };

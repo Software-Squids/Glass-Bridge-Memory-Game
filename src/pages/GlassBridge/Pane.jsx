@@ -48,4 +48,5 @@ function Pane(props) {
     </StyledPane>    // temporary, for debugging
   );
 }
+
 export default Pane;

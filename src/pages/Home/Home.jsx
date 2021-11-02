@@ -14,10 +14,10 @@ const StyledHome = styled.div`
 `
 
 /* /Scores and /Help are currently empty */
-// ADD: <SquidText>Glass Bridge</SquidText> and make it work
 function Home() {
   return (
     <StyledHome>
+      <SquidText>glass bridge</SquidText>
       <Link to="/Play">New Game</Link>
       <Link to="/Scores">High Score</Link>
       <Link to="/Help">Help</Link>

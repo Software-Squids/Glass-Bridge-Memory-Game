@@ -7,11 +7,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import FontStyles from './fonts/fontStyles';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
       <Router>
+        <FontStyles />
         <App />
       </Router>
     </RecoilRoot>

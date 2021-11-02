@@ -11,8 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-@font-face {
-  font-family: 'GameOfSquids';
-  src: local('GameOfSquids'), url(./fonts/GameOfSquids/GameOfSquids-1GMVL.ttf) format('woff2');
-}
