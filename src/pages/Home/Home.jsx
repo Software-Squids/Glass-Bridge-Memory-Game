@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Button from '@mui/material/Button';
 
 import { SquidText } from '../../components';
 
 
 const StyledHome = styled.div`
   /* Temporary to render vertically, CSS goes here! */
-  a {
+  a, button {
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: #DF245C;
+    font-size: 1.5vw;
   }
 `
 
@@ -17,10 +21,10 @@ const StyledHome = styled.div`
 function Home() {
   return (
     <StyledHome>
-      <SquidText>glass bridge</SquidText>
-      <Link to="/Play">New Game</Link>
-      <Link to="/Scores">High Score</Link>
-      <Link to="/Help">Help</Link>
+      <h1><SquidText>glass bridge</SquidText></h1>
+      <Link to="/Play"><Button><SquidText>new game</SquidText></Button></Link>
+      <Link to="/Scores"><Button><SquidText>high scores</SquidText></Button></Link>
+      <Link to="/Help"><Button><SquidText>help</SquidText></Button></Link>
     </StyledHome>
   );
 }

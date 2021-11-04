@@ -6,7 +6,6 @@ import Pane from './Pane';
 import { randomPath } from './PathGeneration/randomPath';
 
 
-
 const StyledBridge = styled.div`
 /* CSS goes here */
 `

@@ -9,6 +9,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@mui/material": "^5.0.6",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -34,8 +36,11 @@
     "workbox-strategies": "^5.1.4",
     "workbox-streams": "^5.1.4"
   },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+  },
   "engines": {
-    "npm": "6.14.15"
+    "yarn": "~1.22.17"
   },
   "eslintConfig": {
     "extends": [

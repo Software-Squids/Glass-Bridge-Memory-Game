@@ -3,7 +3,7 @@ import { atom } from 'recoil';
 
 const rows = atom({
   key: 'rows',
-  default: 10
+  default: 8
 });
 
 const cols = atom({
