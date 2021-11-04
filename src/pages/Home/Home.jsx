@@ -7,7 +7,6 @@ import { SquidText } from '../../components';
 
 
 const StyledHome = styled.div`
-  /* Temporary to render vertically, CSS goes here! */
   a, button {
     display: flex;
     flex-direction: column;
