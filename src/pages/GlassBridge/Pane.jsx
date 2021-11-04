@@ -7,16 +7,16 @@ import { rows, turn, round, board } from '../../states';
 
 
 const StyledPane = styled(Button)`
-  background-color: ${props => props.selected ? "#DF245C" : "#A8CCD7"};
-  color: white;
+  background-color: ${props => props.selected ? "#DF245C" : "#FFFFFF"};
+  color: ${props => props.selected ? "#FFFFFF" : "000000"};
   min-width: 60px;
   min-height: 60px;
   border-radius: 0;
   margin: 1px;
 
   &:disabled {
-    background-color: ${props => props.selected ? "#DF245C" : "#A8CCD780"};
-    color: white;
+    background-color: ${props => props.selected ? "#DF245C" : "#FFFFFF80"};
+    color: ${props => props.selected ? "#FFFFFF" : "000000"};
   }
 `;
 
@@ -56,7 +56,7 @@ function Pane(props) {
     <StyledPane variant="contained" className="pane" name={props.name} value={props.value}
             onClick={onSelected} selected={selected} disabled={isDisabled}>
       {props.value}
-    </StyledPane>    // temporary, for debugging
+    </StyledPane>
   );
 }
 

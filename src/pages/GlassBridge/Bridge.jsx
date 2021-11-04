@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container as Grid, Row, Col } from 'react-grid-system';
 import styled from 'styled-components';
+import Box from '@mui/material/Box';
 
 import Pane from './Pane';
 import { randomPath } from './PathGeneration/randomPath';
 
 
-const StyledBridge = styled.div`
-/* CSS goes here */
-`
+const StyledBridge = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
 
 function Bridge(props) {
 

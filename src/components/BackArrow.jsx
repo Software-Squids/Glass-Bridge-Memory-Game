@@ -8,12 +8,9 @@ import IconButton from "@mui/material/IconButton";
 const StyledArrow = styled(IconButton)`
   color: #DF245C;
   
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  width: 60px;
-  height: 60px;
+  position: absolute;
+  right: 100%;
+  bottom: 75%;
   font-size: 2vw;
 `;
 

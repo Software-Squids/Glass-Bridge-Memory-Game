@@ -11,11 +11,17 @@ const StyledGame = styled.div`
   // css
 `
 
+const StyledBox = styled.div`
+  position: relative;
+`;
+
 function GamePage() {
   return (
     <StyledGame key={useRecoilValue(board)}>
-      <BackArrow />
-      <h1><SquidText>glass bridge</SquidText></h1>
+      <StyledBox>
+        <BackArrow />
+        <h1><SquidText>glass bridge</SquidText></h1>
+      </StyledBox>
       <Bridge rows={useRecoilValue(rows) + (useRecoilValue(round) - 1)}
               cols={useRecoilValue(cols)}></Bridge>
       <SquidText>ROUND: {useRecoilValue(round)}</SquidText>
