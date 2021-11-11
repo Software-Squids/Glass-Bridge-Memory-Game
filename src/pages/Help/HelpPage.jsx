@@ -6,8 +6,15 @@ import styled from 'styled-components';
 
 
 const Center = styled.div`
-    text-align: center; 
+position: absolute;
+width: 623px;
+height: 79px;
+left: 408px;
+top: 72px;
+
 `;
+//const Line = styled.div``
+
 
 function HelpPage() {
     return (
