@@ -3,16 +3,17 @@ import '../../App.css';
 import { SquidText } from '../../components';
 import styled from 'styled-components';
 
-const StyledBox = styled.div`
-  position: relative;
-`;
 
+
+const Center = styled.div`
+    text-align: center; 
+`;
 
 function HelpPage() {
     return (
-        <StyledBox>
-        <h1><SquidText> Help </SquidText></h1>
-        </StyledBox>
+        <Center>
+            <h1><SquidText> Help </SquidText></h1>
+        </Center>
     );
 }
 export default HelpPage;

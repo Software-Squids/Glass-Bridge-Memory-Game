@@ -3,17 +3,15 @@ import '../../App.css';
 import { SquidText } from '../../components';
 import styled from 'styled-components';
 
-const StyledBox = styled.div`
-  position: relative;
+const Center = styled.div`
+    text-align: center; 
 `;
-
 
 function HighScoresPage() {
     return (
-        <StyledBox>
+        <Center>
         <h1><SquidText> high scores </SquidText></h1>
-        </StyledBox>
+        </Center>
     );
 }
 export default HighScoresPage;
-    //return <h1 className='scores'> High Score </h1>;

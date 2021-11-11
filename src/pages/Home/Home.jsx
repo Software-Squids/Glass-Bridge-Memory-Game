@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 
 import { SquidText } from '../../components';
 
-
 const StyledHome = styled.div`
   a, button {
     display: flex;
@@ -23,7 +22,7 @@ function Home() {
       <h1><SquidText>glass bridge</SquidText></h1>
       <Link to="/Play"><Button><SquidText>new game</SquidText></Button></Link>
       <Link to="/Scores"><Button><SquidText>high scores</SquidText></Button></Link>
-      <Link to="/Help"><Button><SquidText>help</SquidText></Button></Link>
+      <Link to="/Helper"><Button><SquidText>help</SquidText></Button></Link>
     </StyledHome>
   );
 }
