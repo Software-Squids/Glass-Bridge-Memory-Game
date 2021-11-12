@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../App.css';
 import { BackArrow, SquidText } from '../../components';
-
 import styled from 'styled-components';
+
 import line from '../../images/pinkLine1.jpg'
 
-//center help
+//Centering words 
 const Center = styled.div`
 position: absolute;
 bottom: 78%;
@@ -26,8 +26,22 @@ position: absolute;
 bottom: 90%;
 left: 10%;
 `;
+// function HighScoreStats(score) {
+// const highScoreNum = 10; //NO_OF_HIGH_SCORES
+// const highScore = 'highScores'; //HIGH_SCORES
+// const highScoreString = localStorage.getItem(highScore); //highScoreString
+// const hs = JSON.parse(highScoreString) ?? []; //highScores
+// const ls = hs[highScoreNum - 1]?.score ?? 0;
+
+// if (score > ls) { 
+//     saveHighScore(score, hs);
+//     showHighScores();
+// }
+// }
+
 
 function HighScoresPage() {
+
     return (
         <>
         <BackArrowPos>
@@ -38,6 +52,7 @@ function HighScoresPage() {
         <Line1>
                     <img src={line} alt="lines"/>
         </Line1>
+        
         </Center>
         </>
     );
