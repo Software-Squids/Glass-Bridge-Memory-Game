@@ -3,7 +3,7 @@ import { atom } from 'recoil';
 
 const rows = atom({
   key: 'rows',
-  default: 10
+  default: 8
 });
 
 const cols = atom({
@@ -31,4 +31,9 @@ const hasLost = atom({
   default: false
 });
 
-export { rows, cols, round, turn, twoPlayer, hasLost };
+const board = atom({
+  key: 'board',
+  default: 1
+});
+
+export { rows, cols, round, turn, twoPlayer, hasLost, board };

@@ -4,6 +4,9 @@ import './App.css';
 
 import { GlassBridge } from './pages/GlassBridge/';
 import { HomePage } from './pages/Home/';
+import { Help } from './pages/Help/';
+import { HighScores } from './pages/HighScores/';
+
 
 function App() {
   return (
@@ -11,7 +14,13 @@ function App() {
       <header className="App-header">
         <Switch>
           <Route path="/Play">
-            <GlassBridge />
+            <GlassBridge/>
+          </Route>
+          <Route path="/Helper">
+            <Help/>
+          </Route>
+          <Route path="/Scores">
+            <HighScores/>
           </Route>
           <Route exact path="/">
             <HomePage />

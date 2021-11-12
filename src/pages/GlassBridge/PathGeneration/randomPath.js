@@ -1,6 +1,6 @@
-/* NOTE: We will likely want to add a system to encourage variation. */
-// Helper function to randomly generate path
 export function randomPath(rows, cols) {
+  /* NOTE: We will likely want to add a system to encourage variation. */
+
   // Fill 2D Array with zeroes to initialize
   var matrix = new Array(rows).fill(0).map(() => (
     new Array(cols).fill(0))
