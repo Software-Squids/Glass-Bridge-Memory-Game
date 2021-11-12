@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import { SquidText } from '../../components';
+import { BackArrow, SquidText } from '../../components';
 
 import styled from 'styled-components';
 import line from '../../images/pinkLine1.jpg'
@@ -16,14 +16,23 @@ const Line1 = styled.div`
 position: relative;
 width: 639px;
 height: 0px;
-left: 360px;
+left: 375px;
 top: 0px;
 transform: rotate(90deg);
-`
+`;
+
+const BackArrowPos = styled.div`
+position: absolute; 
+bottom: 90%;
+left: 10%;
+`;
 
 function HighScoresPage() {
     return (
         <>
+        <BackArrowPos>
+            <BackArrow />
+        </BackArrowPos>
         <Center>
         <h1><SquidText> high scores </SquidText></h1>
         <Line1>

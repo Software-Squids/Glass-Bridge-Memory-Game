@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import { SquidText } from '../../components';
+import { BackArrow, SquidText } from '../../components';
 import styled from 'styled-components';
 
 import line from '../../images/pinkLine1.jpg'
@@ -17,7 +17,7 @@ const Line1 = styled.div`
 position: relative;
 width: 639px;
 height: 0px;
-left: 360px;
+left: 375px;
 top: 0px;
 transform: rotate(90deg);
 `
@@ -30,20 +30,29 @@ font-size: 12px;
 padding 300px;
 `;
 
+const BackArrowPos = styled.div`
+position: absolute; 
+bottom: 90%;
+left: 10%;
+`;
+
 function HelpPage() {
     return (
-        <>  <Center>
-                <h1><SquidText> Help </SquidText></h1>
-                <Line1>
-                    <img src={line} alt="lines"/>
-                </Line1>
-            </Center>
-            <Description>
-                <h1>When you press "New Game" from the start menu, you will see two lines of boxes. A path will appear for you to blah blah blah blagh blah yadda yadda yadda yadda  </h1>
-            </Description>
-            
-        </>
-        
+        <> 
+        <BackArrowPos> 
+            <BackArrow/>
+        </BackArrowPos>
+       
+        <Center>
+            <h1><SquidText> Help </SquidText></h1>
+            <Line1>
+                <img src={line} alt="lines"/>    
+            </Line1>
+        </Center>
+        <Description>
+            <h1>When you press "New Game" from the start menu, you will see two lines of boxes. A path will appear for you to blah blah blah blagh blah yadda yadda yadda yadda  </h1>
+        </Description>  
+        </>   
     )
 }
 export default HelpPage;
