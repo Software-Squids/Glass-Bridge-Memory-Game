@@ -5,8 +5,7 @@ import { MdAccountCircle } from 'react-icons/md';
 import { Button, IconButton, TextField, Dialog, DialogActions, DialogContent,
          DialogContentText, DialogTitle } from '@mui/material';
 
-import { username, password, confirm_password, account_key } from '../../states';
-
+import { user } from '../../states'
 
 const StyledUser = styled(IconButton)`
   color: #DF245C;
@@ -18,11 +17,12 @@ const StyledDialog = styled(Dialog)`
 
 function UserButton(props) {
   const [open, setOpen] = useState(false);
-  
-  const [usrname, setUsername] = useRecoilState(username);
-  const [passwd, setPasswd] = useRecoilState(password);
-  const [confirm_passwd, setConfirmPasswd] = useRecoilState(confirm_password);
-  const [key, setKey] = useRecoilState(account_key)
+
+  const [usrname, setUsername] = useState('');
+  const [passwd, setPasswd] = useState('');
+  const [confirm_passwd, setConfirmPasswd] = useState('');
+
+  const [usr, setUser] = useRecoilState(user);
 
   const handleOpen = () => {
     setOpen(true);
@@ -53,12 +53,11 @@ function UserButton(props) {
         'username': usrname,
         'password': passwd
       })
-    })
-    .then((response) => {
+    }).then((response) => {
       return response.json();
-    })
-    .then((myJson) => {
-      alert("Username: " + usrname + "\nPassword: " + passwd + "\n\n" + JSON.stringify(myJson));
+    }).then((myJson) => {
+      setUser(myJson);
+      alert(myJson.message + '\n\n' + myJson.token);
     })
   }
 
@@ -104,7 +103,7 @@ function UserButton(props) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Close (will be Create Account)</Button>
-        <Button onClick={login}>Login</Button>
+        <Button type="submit" onClick={login}>Login</Button>
       </DialogActions>
     </StyledDialog>
     </>
