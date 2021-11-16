@@ -40,7 +40,7 @@
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   },
   "engines": {
-    "yarn": "~1.22.17"
+    "yarn": "^1.22.11"
   },
   "eslintConfig": {
     "extends": [
