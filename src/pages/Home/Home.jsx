@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Button from '@mui/material/Button';
 
 import { SquidText } from '../../components';
+import { TransparentAppBar } from '../../components';
 
 const StyledHome = styled.div`
   a, button {
@@ -19,6 +20,7 @@ const StyledHome = styled.div`
 function Home() {
   return (
     <StyledHome>
+      <TransparentAppBar home/>
       <h1><SquidText>glass bridge</SquidText></h1>
       <Link to="/Play"><Button><SquidText>new game</SquidText></Button></Link>
       <Link to="/Scores"><Button><SquidText>high scores</SquidText></Button></Link>

@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import Bridge from './Bridge'
-import { BackArrow, SquidText } from '../../components';
+import { TransparentAppBar, SquidText } from '../../components';
 import { rows, cols, round, board } from '../../states';
 
 
@@ -19,7 +19,7 @@ function GamePage() {
   return (
     <StyledGame key={useRecoilValue(board)}>
       <StyledBox>
-        <BackArrow />
+        <TransparentAppBar />
         <h1><SquidText>glass bridge</SquidText></h1>
       </StyledBox>
       <Bridge rows={useRecoilValue(rows) + (useRecoilValue(round) - 1)}

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import { BackArrow, SquidText } from '../../components';
+import { TransparentAppBar, SquidText } from '../../components';
 import styled from 'styled-components';
 
 import line from '../../images/pinkLine1.jpg'
@@ -157,13 +157,16 @@ left: 10%;
 function HelpPage() {
     return (
         <> 
-        <BackArrowPos> 
+        {/* replacing BackArrowPos to test TransparentAppBar -Hans*/}
+        {/*<BackArrowPos> 
             <BackArrow />
-        </BackArrowPos>
+        </BackArrowPos>*/}
+        <TransparentAppBar />
+        
         <Line2>
             <img src={line} alt="lines"/> 
         </Line2>
-        
+                
         <Center>
             <h1><SquidText> Help </SquidText></h1>
             <Line1>
