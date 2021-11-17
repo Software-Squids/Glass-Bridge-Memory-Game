@@ -34,6 +34,7 @@ function SignoutDialog(props) {
       closeDialog();
     }).catch((e) => {
       setError(e.message);
+      alert(e.message); // temp alert, not actually signing in
     })
   }
 

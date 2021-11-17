@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { MdAccountCircle, MdSwitchAccount } from 'react-icons/md';
 import { IconButton } from '@mui/material';
@@ -17,7 +17,7 @@ function UserButton(props) {
   const [signupOpen, setSignupOpen] = useState(false);
   const [signoutOpen, setSignoutOpen] = useState(false);
 
-  const [usr, setUser] = useRecoilState(user);
+  const usr = useRecoilValue(user);
 
   const handleOpen = () => {
     if (usr === false) {
