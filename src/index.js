@@ -6,16 +6,20 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@mui/material';
 
 import FontStyles from './fonts/fontStyles';
+import defaultTheme from './themes/defaultTheme';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
       <Router>
-        <FontStyles />
-        <App />
+        <ThemeProvider theme={defaultTheme}>
+          <FontStyles />
+          <App />
+        </ThemeProvider>
       </Router>
     </RecoilRoot>
   </React.StrictMode>,

@@ -57,15 +57,16 @@ function UserButton(props) {
       })
     }).then((response) => {
       return response.json();
-    }).then((myJson) => {
-      if (!myJson.ok) {
-        setError(myJson.message);
+    }).then((responseJson) => {
+      if (!responseJson.ok) {
+        throw responseJson;
       }
-      setUser(myJson);
-      alert(myJson.message + '\n\n' + myJson.token);
+      setUser(responseJson);
+      alert(responseJson.message + '\n\n' + responseJson.token);
     }).catch((e) => {
       setError(e.message);
-    })
+      alert(e.message);
+    });
   }
 
   return (

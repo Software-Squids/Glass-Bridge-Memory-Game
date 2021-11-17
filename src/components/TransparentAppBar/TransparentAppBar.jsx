@@ -6,7 +6,7 @@ import { BackArrow, UserButton } from '..';
 
 
 const StyledAppBar = styled(AppBar)`
-  background-color: transparent;
+  box-shadow: none;
   position: sticky;
 `
 
@@ -18,7 +18,7 @@ const StyledBox = styled(Box)`
 
 function TransparentAppBar(props) {
   return (
-    <StyledAppBar>
+    <StyledAppBar color="transparent">
       <Toolbar>
         <StyledBox>
           {!props.home && <BackArrow />}
