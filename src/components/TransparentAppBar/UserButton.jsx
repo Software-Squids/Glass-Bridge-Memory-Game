@@ -17,6 +17,7 @@ const StyledDialog = styled(Dialog)`
 
 function UserButton(props) {
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState(null);
 
   const [usrname, setUsername] = useState('');
   const [passwd, setPasswd] = useState('');
@@ -47,6 +48,7 @@ function UserButton(props) {
   const login = () => {
     // TODO: make response prettier and actually log the user in
     // Currently, this is just changing states and attempting a login.
+    setError(null);
     fetch('https://glass-bridge.herokuapp.com/api/v1/user/signin', {
       method: 'POST',
       body: new URLSearchParams({
@@ -56,8 +58,13 @@ function UserButton(props) {
     }).then((response) => {
       return response.json();
     }).then((myJson) => {
+      if (!myJson.ok) {
+        setError(myJson.message);
+      }
       setUser(myJson);
       alert(myJson.message + '\n\n' + myJson.token);
+    }).catch((e) => {
+      setError(e.message);
     })
   }
 

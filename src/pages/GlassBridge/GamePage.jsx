@@ -16,15 +16,20 @@ const StyledBox = styled.div`
 `;
 
 function GamePage() {
+  const gameKey = useRecoilValue(board);
+  const gameRows = useRecoilValue(rows);
+  const gameCols = useRecoilValue(cols);
+  const gameRound = useRecoilValue(round);
+
   return (
-    <StyledGame key={useRecoilValue(board)}>
+    <StyledGame key={gameKey}>
       <StyledBox>
         <TransparentAppBar />
         <h1><SquidText>glass bridge</SquidText></h1>
       </StyledBox>
-      <Bridge rows={useRecoilValue(rows) + (useRecoilValue(round) - 1)}
-              cols={useRecoilValue(cols)}></Bridge>
-      <SquidText>ROUND: {useRecoilValue(round)}</SquidText>
+      <Bridge rows={gameRows + gameRound - 1}
+              cols={gameCols}></Bridge>
+      <SquidText>ROUND: {gameRound}</SquidText>
     </StyledGame>
     
   )

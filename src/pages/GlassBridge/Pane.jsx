@@ -29,7 +29,10 @@ function Pane(props) {
   const [currentTurn, setTurn] = useRecoilState(turn);  // global state
   const [currentRound, setRound] = useRecoilState(round);
   const [currentBoard, setBoard] = useRecoilState(board);
-  const isDisabled = ((useRecoilValue(rows) + useRecoilValue(round) - currentTurn - 1) === row ? false : true);
+  const rowsValue = useRecoilValue(rows);
+  const roundValue = useRecoilValue(round);
+
+  const isDisabled = ((rowsValue + roundValue - currentTurn - 1) === row ? false : true);
   
   const onSelected = () => {
     setSelected(true);
