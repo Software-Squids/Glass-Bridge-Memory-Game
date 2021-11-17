@@ -7,7 +7,7 @@ import { rows, turn, round, board } from '../../states';
 
 
 const StyledPane = styled(Button)`
-  background-color: ${props => props.selected ? "#DF245C" : "#FFFFFF"};
+  background-color: ${props => props.selected ? "#DF245C" : "#FFFFFFC8"};
   color: ${props => props.selected ? "#FFFFFF" : "000000"};
   min-width: 60px;
   min-height: 60px;
