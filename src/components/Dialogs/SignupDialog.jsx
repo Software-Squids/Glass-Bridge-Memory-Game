@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
+import { setCookie } from './cookieOperations';
 import { user } from '../../states'
 
 
@@ -19,7 +20,7 @@ function SignupDialog(props) {
   const [passwd, setPasswd] = useState('');
   const [confirm_passwd, setConfirmPasswd] = useState('');
 
-  const [usr, setUser] = useRecoilState(user);
+  const [, setUser] = useRecoilState(user);
 
   const closeDialogs = (event) => {
     setLoginOpen(false);
@@ -32,7 +33,7 @@ function SignupDialog(props) {
     setSignupOpen(false);
   }
 
-  const handleUser = (event) => {
+  const handleUsername = (event) => {
     setUsername(event.target.value);
   }
 
@@ -60,7 +61,8 @@ function SignupDialog(props) {
       if (!responseJson.ok) {
         throw responseJson;
       }
-      setUser(responseJson);
+      setCookie('jwt_token', responseJson.token);
+      setUser(responseJson.data.user_id);
       closeDialogs();
     }).catch((e) => {
       setError(e.message);
@@ -75,7 +77,7 @@ function SignupDialog(props) {
           <DialogContentText>
             To submit high scores, please login or create an account.
           </DialogContentText>
-          <TextField onChange={handleUser}
+          <TextField onChange={handleUsername}
             autoFocus
             id="username"
             label="Username"

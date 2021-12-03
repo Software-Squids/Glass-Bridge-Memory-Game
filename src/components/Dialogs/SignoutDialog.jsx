@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
+import { getCookie, authHeader } from './cookieOperations';
 import { user } from '../../states'
 
 
@@ -13,7 +14,6 @@ const StyledDialog = styled(Dialog)`
 
 function SignoutDialog(props) {
   const { open, setSignoutOpen } = props;
-  const [error, setError] = useState(null);
 
   const [usr, setUser] = useRecoilState(user);
 
@@ -23,17 +23,17 @@ function SignoutDialog(props) {
 
   const signout = (event) => {
     fetch('https://glass-bridge.herokuapp.com/api/v1/user/signout', {
-      method: 'GET'
+      method: 'GET',
+      headers: authHeader()
     }).then((response) => {
       return response.json();
     }).then((responseJson) => {
       if (!responseJson.ok) {
         throw responseJson;
       }
-      setUser(false);
+      setUser('');
       closeDialog();
     }).catch((e) => {
-      setError(e.message);
       alert(e.message); // temp alert, not actually signing in
     })
   }
@@ -43,7 +43,7 @@ function SignoutDialog(props) {
       <DialogTitle>Sign Out?</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          TODO: display account info here
+          {usr}
         </DialogContentText>
       </DialogContent>
       <DialogActions>

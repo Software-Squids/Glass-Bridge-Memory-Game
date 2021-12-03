@@ -20,7 +20,7 @@ function UserButton(props) {
   const usr = useRecoilValue(user);
 
   const handleOpen = () => {
-    if (usr === false) {
+    if (usr === '') {
       setLoginOpen(true);
     } else {
       setSignoutOpen(true);
@@ -30,7 +30,7 @@ function UserButton(props) {
   return (
     <>
     <StyledUser onClick={handleOpen}>
-      {usr === false ? <MdAccountCircle /> : <MdSwitchAccount />}
+      {usr === '' ? <MdAccountCircle /> : <MdSwitchAccount />}
     </StyledUser>
     <LoginDialog open={loginOpen}
       setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
