@@ -22,6 +22,7 @@
     "react-scripts": "4.0.3",
     "recoil": "^0.4.1",
     "styled-components": "^5.3.3",
+    "use-sound": "^4.0.1",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",
@@ -40,7 +41,7 @@
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   },
   "engines": {
-    "yarn": "~1.22.17"
+    "yarn": "^1.22.11"
   },
   "eslintConfig": {
     "extends": [

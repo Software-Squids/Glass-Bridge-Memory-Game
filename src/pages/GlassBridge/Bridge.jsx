@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Container as Grid, Row, Col } from 'react-grid-system';
 import styled from 'styled-components';
 import Box from '@mui/material/Box';
@@ -14,8 +14,11 @@ const StyledBridge = styled(Box)`
 
 function Bridge(props) {
 
-  var matrix = randomPath(props.rows, props.cols);
-
+  const matrix = useMemo(() => {
+      return randomPath(props.rows, props.cols);
+    },
+    [props.rows, props.cols]
+  );
   return (
     <StyledBridge>
       <Grid>
