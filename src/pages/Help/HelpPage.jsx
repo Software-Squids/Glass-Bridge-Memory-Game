@@ -214,7 +214,7 @@ function HelpPage() {
             <img src={line} alt="lines"/> 
         </Line3> 
         <Description>
-            <p>When you press "New Game" from the start menu, the game will begin.<br></br> 
+           <p> When you press "New Game" from the start menu, the game will begin.<br></br> 
             <pre>   
                 1) Press the start button <br></br> 
                 2) A path will appear for (this many) seconds, memorize the path <br></br>
