@@ -2,16 +2,20 @@ import React from 'react';
 import '../../App.css';
 import { BackArrow, SquidText } from '../../components';
 import styled from 'styled-components';
+import {userState} from '../../states/user.js'; 
+import {useRecoilState} from 'recoil';
 
 import line from '../../images/pinkLine1.jpg'
 
-//Centering words 
+
+
+//centering HighScores
 const Center = styled.div`
 position: absolute;
 bottom: 78%;
 `;
 
-//lines 
+//pink line 
 const Line1 = styled.div`
 position: relative;
 width: 639px;
@@ -21,28 +25,25 @@ top: 0px;
 transform: rotate(90deg);
 `;
 
+//back arrow
 const BackArrowPos = styled.div`
 position: absolute; 
 bottom: 90%;
 left: 10%;
 `;
-// function HighScoreStats(score) {
-// const highScoreNum = 10; //NO_OF_HIGH_SCORES
-// const highScore = 'highScores'; //HIGH_SCORES
-// const highScoreString = localStorage.getItem(highScore); //highScoreString
-// const hs = JSON.parse(highScoreString) ?? []; //highScores
-// const ls = hs[highScoreNum - 1]?.score ?? 0;
 
-// if (score > ls) { 
-//     saveHighScore(score, hs);
-//     showHighScores();
-// }
-// }
+//all the scores
+const Scores = styled.div`
+position: absolute; 
+top: 100%;
+left: 10%;
+width: 530px;
+`;
 
 
 function HighScoresPage() {
-
-    return (
+    const [userstate, setUserstate] = useRecoilState(userState);
+    return (   
         <>
         <BackArrowPos>
             <BackArrow />
@@ -52,7 +53,7 @@ function HighScoresPage() {
         <Line1>
                     <img src={line} alt="lines"/>
         </Line1>
-        
+        <Scores><SquidText>1. Gabrielle </SquidText> </Scores>
         </Center>
         </>
     );
