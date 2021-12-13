@@ -11,16 +11,15 @@ import { ThemeProvider } from '@mui/material';
 import FontStyles from './fonts/fontStyles';
 import defaultTheme from './themes/defaultTheme';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <Router>
-        <ThemeProvider theme={defaultTheme}>
-          <FontStyles />
-          <App />
-        </ThemeProvider>
-      </Router>
+        <Router>
+          <ThemeProvider theme={defaultTheme}>
+            <FontStyles />
+            <App />
+          </ThemeProvider>
+        </Router>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')

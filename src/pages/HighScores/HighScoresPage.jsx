@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../../App.css';
 import { BackArrow, SquidText } from '../../components';
 import styled from 'styled-components';
 import {userState} from '../../states/user.js'; 
-import {useRecoilState} from 'recoil';
-
+import {useRecoilState, useRecoilValue} from 'recoil';
+import { highscoresState } from '../../states/highscores'
 import line from '../../images/pinkLine1.jpg'
+import { CircularProgress } from '@mui/material';
 
 
 
@@ -41,8 +42,14 @@ width: 530px;
 `;
 
 
-function HighScoresPage() {
+function HighScoresPage({
+    data,
+    isFetching,
+    error
+}) {
+    const highscores = useRecoilValue(highscoresState)
     const [userstate, setUserstate] = useRecoilState(userState);
+    
     return (   
         <>
         <BackArrowPos>
@@ -53,7 +60,13 @@ function HighScoresPage() {
         <Line1>
                     <img src={line} alt="lines"/>
         </Line1>
-        <Scores><SquidText>1. Gabrielle </SquidText> </Scores>
+        <Scores>
+            {/* {isFetching && <CircularProgress style={{textAlign:'center',marginTop:15}} />}
+            {error && <p style={{color:"#fff"}}>{error}</p>} */}
+            {highscores && highscores.map((score, index) => (
+                <SquidText key={`${index}-${score[0]}`}>{score[1]} - {score[0]}</SquidText>
+            ))}
+        </Scores>
         </Center>
         </>
     );
