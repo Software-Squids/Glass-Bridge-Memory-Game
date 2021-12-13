@@ -9,6 +9,7 @@ import { Help } from './pages/Help/';
 import { HighScores } from './pages/HighScores/';
 import { highscoresState } from './states/highscores';
 
+const MAX_HIGHSCORES = 10
 
 function App() {
   const setHighscores = useSetRecoilState(highscoresState)
@@ -21,7 +22,9 @@ function App() {
         // sort highscores
         scores.data.sort((a, b) => b[0] - a[0])
         console.log('scores sorted:', scores.data)
-        setHighscores(scores.data)
+        // trim highscores
+        let trimmedHighscores = scores.data.slice(0, MAX_HIGHSCORES)
+        setHighscores(trimmedHighscores)
       })
       .catch(err => {
           console.log('scores error:', err)

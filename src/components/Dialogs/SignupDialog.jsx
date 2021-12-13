@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 import { setCookie } from './cookieOperations';
-import { user } from '../../states'
+import { user, userState } from '../../states'
 
 
 const StyledDialog = styled(Dialog)`
@@ -21,6 +21,7 @@ function SignupDialog(props) {
   const [confirm_passwd, setConfirmPasswd] = useState('');
 
   const [, setUser] = useRecoilState(user);
+  const setUserState = useSetRecoilState(userState)
 
   const closeDialogs = (event) => {
     setLoginOpen(false);
@@ -63,6 +64,7 @@ function SignupDialog(props) {
       }
       setCookie('jwt_token', responseJson.token);
       setUser(responseJson.data.user_id);
+      setUserState({...responseJson.data, username: usrname, auth: true })
       closeDialogs();
     }).catch((e) => {
       setError(e.message);

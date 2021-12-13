@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 import { setCookie } from './cookieOperations';
-import { user } from '../../states'
+import { user, userState } from '../../states'
 
 
 const StyledDialog = styled(Dialog)`
@@ -18,7 +18,8 @@ function LoginDialog(props) {
   const [usrname, setUsername] = useState('');
   const [passwd, setPasswd] = useState('');
 
-  const [, setUser] = useRecoilState(user);
+  const setUser = useSetRecoilState(user)
+  const setUserState = useSetRecoilState(userState);
 
   const closeDialogs = (event) => {
     setLoginOpen(false);
@@ -51,11 +52,13 @@ function LoginDialog(props) {
     }).then((response) => {
       return response.json();
     }).then((responseJson) => {
+      console.log('res:', responseJson)
       if (!responseJson.ok) {
         throw responseJson;
       }
       setCookie('jwt_token', responseJson.token);
       setUser(responseJson.data.user_id);
+      setUserState({...responseJson.data, usrname, auth: true});
       closeDialogs();
     }).catch((e) => {
       setError(e.message);

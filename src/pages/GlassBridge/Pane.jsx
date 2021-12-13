@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
-import useSound from 'use-sound';
 
 import { rows, turn, round, board } from '../../states';
-import marimba_scale_sprite from '../../audio/marimba_scale_sprite.mp3'
+import { userState } from '../../states/user';
+import { highscoresState } from '../../states/highscores';
+import { getCookie, authHeader } from '../../components/Dialogs/cookieOperations';
 
 
 const StyledPane = styled(Button)`
@@ -23,9 +24,13 @@ const StyledPane = styled(Button)`
 `;
 
 
-function Pane(props) {
-  const row = parseInt(props.name.split('_')[1]);
-  const col = parseInt(props.name.split('_')[2]);
+function Pane({
+  name,
+  value,
+  play
+}) {
+  const row = parseInt(name.split('_')[1]);
+  const col = parseInt(name.split('_')[2]);
 
   const [selected, setSelected] = useState(false);  // component state
   
@@ -35,21 +40,15 @@ function Pane(props) {
   const rowsValue = useRecoilValue(rows);
   const roundValue = useRecoilValue(round);
 
+  const user = useRecoilValue(userState)
+  const [highscores, setHighscores] = useRecoilState(highscoresState)
+
   const isDisabled = ((rowsValue + roundValue - currentTurn - 1) === row ? false : true);
-  
-  const [play] = useSound(marimba_scale_sprite, {
-    sprite: {
-      c3: [0, 1250],
-      d4: [2000, 1250],
-      incorrect: [4000, 750],
-      correct: [6000, 2036]
-    },
-  });
   
   const onSelected = () => {
     setSelected(true);
 
-    if (props.value === 1) {
+    if (value === 1) {
       setTurn(currentTurn + 1);
       if (col === 0 & row !== 0) {
         play({id: 'c3'});
@@ -58,13 +57,11 @@ function Pane(props) {
       }
     } else {
       play({id: 'incorrect'});
-      setTurn(1);
-      setRound(1);
-      setBoard(currentBoard + 1);
       // restart game
+      restartGame()
     }
 
-    if (props.value === 1 && row === 0) {
+    if (value === 1 && row === 0) {
       play({id: 'correct'});
       setTurn(1);
       setRound(currentRound + 1);
@@ -73,10 +70,60 @@ function Pane(props) {
     }
   }
 
+  const restartGame = () => {
+    const score = calculateScore()
+    console.log('score postgame:', score)
+
+    setTurn(1);
+    setRound(1);
+    setBoard(currentBoard + 1);
+    
+    // Submit highscore
+    postHighscore(score)
+  }
+
+  const postHighscore = (score) => {
+    const header = authHeader();
+    console.log('header:', header)
+    fetch("https://glass-bridge.herokuapp.com/api/v1/scoreboard", {
+      method: "POST",
+      body: new URLSearchParams({
+        'username': user.userName,
+        'score': score
+      }),
+      headers: header
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('data:', data)
+        if(data.ok) {
+          // add to highscores if it is high enough
+          if(highscores.length < 10 || score > highscores[9]) {
+            let newHighscores = [...highscores, [score, user.userName]]
+            let newSorted = newHighscores.sort((a, b) => b[0] - a[0])
+            newHighscores.pop();
+            setHighscores(newSorted)
+          }
+        }
+      })
+      .catch(err => {
+        console.log('error posting hs:', err)
+      })
+  }
+
+  const calculateScore = () => {
+    const BASE_BLOCKS = 8
+    let score = currentRound * BASE_BLOCKS + currentTurn;
+    for(let i=1; i<currentRound; i++) {
+      score += (1*i)
+    }
+    return score;
+  }
+
   return (
-    <StyledPane variant="contained" className="pane" name={props.name} value={props.value}
+    <StyledPane variant="contained" className="pane" name={name} value={value}
             onClick={onSelected} selected={selected} disabled={isDisabled}>
-      {props.value}
+      {value}
     </StyledPane>
   );
 }

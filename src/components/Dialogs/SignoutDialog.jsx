@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import React from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 import { getCookie, authHeader } from './cookieOperations';
-import { user } from '../../states'
+import { user, userState } from '../../states'
+import { initialUserState } from '../../states/user';
 
 
 const StyledDialog = styled(Dialog)`
@@ -16,6 +17,7 @@ function SignoutDialog(props) {
   const { open, setSignoutOpen } = props;
 
   const [usr, setUser] = useRecoilState(user);
+  const setUserState = useSetRecoilState(userState)
 
   const closeDialog = (event) => {
     setSignoutOpen(false);
@@ -32,9 +34,14 @@ function SignoutDialog(props) {
         throw responseJson;
       }
       setUser('');
+      setUserState(initialUserState)
       closeDialog();
     }).catch((e) => {
-      alert(e.message); // temp alert, not actually signing in
+      console.log('error:', e)
+      // alert(e.message); // temp alert, not actually signing in
+      setUser('');
+      setUserState(initialUserState)
+      closeDialog();
     })
   }
 
