@@ -54,6 +54,10 @@ function Pane({
         play({id: 'c3'});
       } else if (col === 1 && row !== 0) {
         play({id: 'd4'});
+      } else if (col === 2 && row !== 0) {
+        play({id: 'e5'});
+      } else if (col === 3 && row !== 0) {
+        play({id: 'f6'});
       }
     } else {
       play({id: 'incorrect'});

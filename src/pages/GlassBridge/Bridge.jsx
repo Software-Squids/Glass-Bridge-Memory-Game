@@ -25,13 +25,16 @@ function Bridge(props) {
     sprite: {
       c3: [0, 1250],
       d4: [2000, 1250],
-      incorrect: [4000, 750],
-      correct: [6000, 2036]
+      e5: [4000, 1250],
+      f6: [6000, 1250],
+      incorrect: [8000, 750],
+      correct: [10000, 2036]
     },
   });
 
   return (
     <StyledBridge>
+      {console.log(matrix)}
       <Grid>
       {matrix.map((row, ri) => (
         <Row key={"row_" + ri}>
