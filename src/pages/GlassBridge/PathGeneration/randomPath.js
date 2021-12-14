@@ -2,16 +2,16 @@ export function randomPath(rows, cols) {
   /* NOTE: We will likely want to add a system to encourage variation. */
 
   // Fill 2D Array with zeroes to initialize
-  var matrix = new Array(rows).fill(0).map(() => (
-    new Array(cols).fill(0))
-  );
+  const matrix = new Array(rows).fill(0).map(() => (
+    new Array(cols).fill(0)
+  ));
   
   // First row
   var selectedPane = Math.floor(Math.random() * cols);
   matrix[rows - 1][selectedPane] = 1;
 
   // Randomly generate path from second row onwards
-  for (var i = rows - 2; i >= 0; i--) {
+  for (let i = rows - 2; i >= 0; i--) {
     var validTiles = [];
     if (selectedPane === 0) {
       validTiles = [0, 1];
@@ -21,12 +21,10 @@ export function randomPath(rows, cols) {
       validTiles = [selectedPane - 1, selectedPane, selectedPane + 1];
     }
 
-    selectedPane = Math.floor(
-      (Math.random() * (validTiles[validTiles.length - 1] + 1)
-      + validTiles[0])
-    );
-
+    selectedPane = validTiles[Math.floor(validTiles.length * Math.random())];
+    
     matrix[i][selectedPane] = 1;
-  }  
+  }
+  console.log(matrix);  
   return matrix;
 }

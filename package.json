@@ -1,6 +1,7 @@
 {
   "name": "glass-bridge-memory-game",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
