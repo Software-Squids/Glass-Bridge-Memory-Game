@@ -16,11 +16,10 @@ const StyledBridge = styled(Box)`
 
 function Bridge(props) {
 
-  const matrix = useMemo(() => {
-      return randomPath(props.rows, props.cols);
-    },
-    [props.rows, props.cols]
-  );
+  const matrix = useMemo(() => randomPath(props.rows, props.cols), [
+    props.rows,
+    props.cols
+  ]);
 
   const [play] = useSound(marimba_scale_sprite, {
     sprite: {
@@ -52,4 +51,5 @@ function Bridge(props) {
   </StyledBridge>
   );
 }
+
 export default Bridge;

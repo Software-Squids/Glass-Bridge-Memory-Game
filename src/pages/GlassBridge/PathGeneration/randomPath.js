@@ -2,9 +2,11 @@ export function randomPath(rows, cols) {
   /* NOTE: We will likely want to add a system to encourage variation. */
 
   // Fill 2D Array with zeroes to initialize
-  var matrix = new Array(rows).fill(0).map(() => (
+  const base = new Array(rows).fill(0);
+  const matrix = Array.isArray(base) && base.map(() => (
     new Array(cols).fill(0))
   );
+  console.log(matrix);
   
   // First row
   var selectedPane = Math.floor(Math.random() * cols);
@@ -27,6 +29,7 @@ export function randomPath(rows, cols) {
     );
 
     matrix[i][selectedPane] = 1;
-  }  
+  }
+  console.log(matrix);  
   return matrix;
 }

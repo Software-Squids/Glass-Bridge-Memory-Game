@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { Button } from '@mui/material';
 
 import Bridge from './Bridge'
+import { OptionsDialog } from '../../components/Dialogs'
 import { TransparentAppBar, SquidText } from '../../components';
 import { rows, cols, round, board } from '../../states';
 
@@ -20,6 +22,8 @@ function GamePage() {
   const gameRows = useRecoilValue(rows);
   const gameCols = useRecoilValue(cols);
   const gameRound = useRecoilValue(round);
+  
+  const [optionsOpen, setOptionsOpen] = useState(false);
 
   return (
     <StyledGame key={gameKey}>
@@ -30,6 +34,9 @@ function GamePage() {
       <Bridge rows={gameRows + gameRound - 1}
               cols={gameCols}></Bridge>
       <SquidText>ROUND: {gameRound}</SquidText>
+      <Button variant='outlined' onClick={() => setOptionsOpen(true)}>Options</Button>
+      <Button variant='contained'>asdfasdf</Button>
+      <OptionsDialog open={optionsOpen} setOptionsOpen={setOptionsOpen} />
     </StyledGame>
     
   )
