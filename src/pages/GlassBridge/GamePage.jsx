@@ -25,6 +25,16 @@ function GamePage() {
   
   const [optionsOpen, setOptionsOpen] = useState(false);
 
+  function getDifficulty(cols) {
+    if (cols === 2) {
+      return "easy";
+    } else if (cols === 3) {
+      return "medium";
+    } else {
+      return "hard";
+    }
+  }
+
   return (
     <StyledGame key={gameKey}>
       <StyledBox>
@@ -33,7 +43,7 @@ function GamePage() {
       </StyledBox>
       <Bridge rows={gameRows + gameRound - 1}
               cols={gameCols}></Bridge>
-      <SquidText>ROUND: {gameRound}</SquidText>
+      <SquidText>DIFFICULTY: {getDifficulty(gameCols)}&emsp;ROUND: {gameRound}</SquidText>
       <Button variant='outlined' onClick={() => setOptionsOpen(true)}>Options</Button>
       <Button variant='contained'>asdfasdf</Button>
       <OptionsDialog open={optionsOpen} setOptionsOpen={setOptionsOpen} />
