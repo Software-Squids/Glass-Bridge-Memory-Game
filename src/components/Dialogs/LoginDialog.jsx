@@ -43,7 +43,7 @@ function LoginDialog(props) {
   const login = (event) => {
     event.preventDefault();
     setError(null);
-    fetch('http://localhost:5000/api/v1/user/signin', {
+    fetch('https://glass-bridge.herokuapp.com/api/v1/user/signin', {
       method: 'POST',
       body: new URLSearchParams({
         'username': usrname,

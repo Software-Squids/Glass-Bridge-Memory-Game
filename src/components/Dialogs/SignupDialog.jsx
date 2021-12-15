@@ -49,7 +49,7 @@ function SignupDialog(props) {
   const signup = (event) => {
     event.preventDefault();
     setError(null);
-    fetch('http://localhost:5000/api/v1/user/signup', {
+    fetch('https://glass-bridge.herokuapp.com/api/v1/user/signup', {
       method: 'POST',
       body: new URLSearchParams({
         'username': usrname,
@@ -89,8 +89,8 @@ function SignupDialog(props) {
             fullWidth
             margin="dense"
             variant="filled"
-            error={error?.charAt(0) === 'U'}
-            helperText={error?.charAt(0) === 'U' && error}
+            error={error?.toString().charAt(0) === 'U'}
+            helperText={error?.toString().charAt(0) === 'U' && error.toString()}
           />
           <TextField onChange={handlePassword}
             id="password"
@@ -100,8 +100,8 @@ function SignupDialog(props) {
             fullWidth
             margin="dense"
             variant="filled"
-            error={error?.charAt(0) === 'P'}
-            helperText={error?.charAt(0) === 'P' && error}
+            error={error?.toString().charAt(0) === 'P'}
+            helperText={error?.toString().charAt(0) === 'P' && error.toString()}
           />
           <TextField onChange={handleConfirmPassword}
             id="confirm_password"

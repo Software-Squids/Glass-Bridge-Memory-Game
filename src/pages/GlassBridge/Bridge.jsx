@@ -42,7 +42,7 @@ function Bridge(props) {
     const difficulty = getDifficulty(props.cols)
     // const header = authHeader();
     // console.log('header:', header)
-    fetch("http://localhost:5000/api/v1/scoreboard", {
+    fetch("https://glass-bridge.herokuapp.com/api/v1/scoreboard", {
       method: "POST",
       body: new URLSearchParams({
         'username': userState.username,

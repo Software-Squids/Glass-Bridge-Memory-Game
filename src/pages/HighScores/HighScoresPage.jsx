@@ -52,7 +52,7 @@ export function HighScoresPage(props) {
     const getHighscores = (difficulty = "easy") => {
         setErrors(null)
         // Need to set default to easy
-        fetch(`http://localhost:5000/api/v1/scoreboard?difficulty=${difficulty}`, {
+        fetch(`https://glass-bridge.herokuapp.com/api/v1/scoreboard?difficulty=${difficulty}`, {
             method: "GET",
             headers: {
                 "access_token": getCookie("access_token") || ""
