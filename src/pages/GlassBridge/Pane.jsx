@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { keyframes } from 'styled-components';
 import Button from '@mui/material/Button';
@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { rows, turn, round, board } from '../../states';
 import { userState } from '../../states/user';
 import { highscoresState } from '../../states/highscores';
-import { getCookie, authHeader } from '../../components/Dialogs/cookieOperations';
+import { authHeader } from '../../components/Dialogs/cookieOperations';
 
 
 const colorFlash = keyframes`
@@ -76,17 +76,21 @@ function Pane({
   const [currentBoard, setBoard] = useRecoilState(board);
   const rowsValue = useRecoilValue(rows);
   const roundValue = useRecoilValue(round);
-  const [isDisabled, setDisabled] = useState((rowsValue + roundValue - currentTurn - 1) === row ? false : true);
+  
+  const [isDisabled, setDisabled] = useState(false);
 
   const user = useRecoilValue(userState)
   const [highscores, setHighscores] = useRecoilState(highscoresState)
 
-  if (row === 0 && turn === 1) {
-    setDisabled(true);
-    setTimeout(() => {
-      setDisabled(false);
-    }, 2000)
-  }
+  useEffect(() => {
+    setDisabled(((rowsValue + roundValue - currentTurn - 1) === row) ? false : true);
+    if (row === (rowsValue + roundValue - currentTurn - 1) && currentTurn === 1) {
+      setDisabled(true);
+      setTimeout(() => {
+        setDisabled(false);
+      }, 2000);
+    }
+  }, [currentTurn, rowsValue, roundValue, row]);
   
   const onSelected = () => {
     setSelected(true);

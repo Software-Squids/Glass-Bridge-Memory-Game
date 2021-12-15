@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import React, { useState, useEffect } from 'react';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
 
 import Bridge from './Bridge'
 import { OptionsDialog } from '../../components/Dialogs'
 import { TransparentAppBar, SquidText } from '../../components';
-import { rows, cols, round, board } from '../../states';
+import { rows, cols, round, board, turn } from '../../states';
 
 
 const StyledGame = styled.div`
@@ -22,6 +22,7 @@ function GamePage() {
   const gameRows = useRecoilValue(rows);
   const gameCols = useRecoilValue(cols);
   const gameRound = useRecoilValue(round);
+  const [, setTurn] = useRecoilState(turn);
   
   const [optionsOpen, setOptionsOpen] = useState(false);
 
@@ -35,6 +36,10 @@ function GamePage() {
     }
   }
 
+  useEffect(() => {
+    setTurn(1);
+  }, [setTurn])
+
   return (
     <StyledGame key={gameKey}>
       <StyledBox>
@@ -45,7 +50,6 @@ function GamePage() {
               cols={gameCols}></Bridge>
       <SquidText>DIFFICULTY: {getDifficulty(gameCols)}&emsp;ROUND: {gameRound}</SquidText>
       <Button variant='outlined' onClick={() => setOptionsOpen(true)}>Options</Button>
-      <Button variant='contained'>asdfasdf</Button>
       <OptionsDialog open={optionsOpen} setOptionsOpen={setOptionsOpen} />
     </StyledGame>
     
