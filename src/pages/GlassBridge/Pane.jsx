@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Button from '@mui/material/Button';
 
 import { rows, turn, round, board } from '../../states';
@@ -8,6 +8,34 @@ import { userState } from '../../states/user';
 import { highscoresState } from '../../states/highscores';
 import { getCookie, authHeader } from '../../components/Dialogs/cookieOperations';
 
+
+const colorFlash = keyframes`
+  0% {
+    background-color: #FFFFFF80;
+  }
+  
+  50% {
+    background-color: #DF245C;
+  }
+
+  100% {
+    background-color: #FFFFFF80;
+  }
+`
+
+const colorDark = keyframes`
+  0% {
+    background-color: #FFFFFF80;
+  }
+
+  50% {
+    background-color: black;
+  }
+
+  100% {
+    background-color: #FFFFFF80;
+  }
+`
 
 const StyledPane = styled(Button)`
   background-color: ${props => props.selected ? "#DF245C" : "#FFFFFFC8"};
@@ -21,13 +49,22 @@ const StyledPane = styled(Button)`
     background-color: ${props => props.selected ? "#DF245C" : "#FFFFFF80"};
     color: ${props => props.selected ? "#FFFFFF" : "000000"};
   }
+
+  &.solid {
+    animation: ${colorFlash} 2s ease;
+  }
+
+  &.fragile {
+    animation: ${colorDark} 2s ease;
+  }
 `;
 
 
 function Pane({
   name,
   value,
-  play
+  play,
+  className
 }) {
   const row = parseInt(name.split('_')[1]);
   const col = parseInt(name.split('_')[2]);
@@ -39,11 +76,17 @@ function Pane({
   const [currentBoard, setBoard] = useRecoilState(board);
   const rowsValue = useRecoilValue(rows);
   const roundValue = useRecoilValue(round);
+  const [isDisabled, setDisabled] = useState((rowsValue + roundValue - currentTurn - 1) === row ? false : true);
 
   const user = useRecoilValue(userState)
   const [highscores, setHighscores] = useRecoilState(highscoresState)
 
-  const isDisabled = ((rowsValue + roundValue - currentTurn - 1) === row ? false : true);
+  if (row === 0 && turn === 1) {
+    setDisabled(true);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 2000)
+  }
   
   const onSelected = () => {
     setSelected(true);
@@ -125,9 +168,8 @@ function Pane({
   }
 
   return (
-    <StyledPane variant="contained" className="pane" name={name} value={value}
+    <StyledPane variant="contained" className={className} name={name} value={value}
             onClick={onSelected} selected={selected} disabled={isDisabled}>
-      {value}
     </StyledPane>
   );
 }
