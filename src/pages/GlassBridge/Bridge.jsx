@@ -45,6 +45,7 @@ function Bridge(props) {
                 value={col}
                 selected="false"
                 play={play}
+                className={col === 1 ? "solid" : "fragile"}
               />
             </Col>
           ))}
