@@ -149,11 +149,6 @@ text-align: left;
 top: 70px;
 `;
 
-const BackArrowPos = styled.div`
-position: absolute; 
-bottom: 90%;
-left: 10%;
-`;
 
 const pinkColor = {color: 'pink'};
 
@@ -221,7 +216,7 @@ function HelpPage() {
            This is a game that will test your memory on three different difficulty levels (easy-2/medium-3/hard-4)<br></br> 
            <br></br>Here are the steps: <br></br>
            <pre> 
-            1) Press "New Game" from the start menu, the game will begin immediately.<br></br> 
+            1) Press "New Game" from the start menu, the game will begin immediately<br></br> 
             2) A path will appear for ~2 seconds, memorize the path <br></br>
             3) The path will disappear and you will need to use your memory to click on the correct boxes <br></br>
             4) If you selected the right path, two boxes will be added to the top for the next round<br></br> 
