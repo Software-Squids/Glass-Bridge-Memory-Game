@@ -17,14 +17,14 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: 800px;
-top: 100px;
+top: 60px;
 `;
 const BlackT = styled.div`
 position: absolute;
 width: 220px;
 height: 220px;
 left: 800px;
-top: 125px;
+top: 85px;
 `;
 
 const PinkT2 = styled.div`
@@ -32,7 +32,7 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: -375px;
-top: 100px;
+top: 60px;
 `;
 
 const BlackT2 = styled.div`
@@ -40,7 +40,7 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: -375px;
-top: 125px;
+top: 85px;
 `;
 
 const BlackC = styled.div`
@@ -48,7 +48,7 @@ position: absolute;
 width: 100px;
 height: 0px;
 left: 830px;
-top: 339px;
+top: 289px;
 `;
 
 const PinkC = styled.div`
@@ -56,7 +56,7 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: 800px;
-top: 325px;
+top: 275px;
 `;
 
 const BlackC2 = styled.div`
@@ -64,7 +64,7 @@ position: absolute;
 width: 100px;
 height: 0px;
 left: -355px;
-top: 339px;
+top: 289px;
 `;
 
 const PinkC2 = styled.div`
@@ -72,7 +72,7 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: -384px;
-top: 325px;
+top: 275px;
 `;
 
 const BlackS = styled.div`
@@ -80,7 +80,7 @@ position: absolute;
 width: 100px;
 height: 0px;
 left: 830px;
-top: 575px;
+top: 515px;
 `;
 
 const PinkS = styled.div`
@@ -88,7 +88,7 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: 800px;
-top: 560px;
+top: 500px;
 `;
 
 const BlackS2 = styled.div`
@@ -96,7 +96,7 @@ position: absolute;
 width: 100px;
 height: 0px;
 left: -355px;
-top: 575px;
+top: 515px;
 `;
 
 const PinkS2 = styled.div`
@@ -104,7 +104,7 @@ position: absolute;
 width: 220px;
 height: 220px;
 left: -384px;
-top: 560px;
+top: 500px;
 `;
 
 //center help
@@ -128,7 +128,7 @@ position: relative;
 width: 639px;
 height: 0px;
 left: 375px;
-top: 0px;
+top: 190px;
 `;
 
 const Line3 = styled.div`
@@ -136,7 +136,7 @@ position: relative;
 width: 639px;
 height: 0px;
 right: 375px;
-top: 0px;
+top: 190px;
 `;
 
 //block of text 
@@ -146,6 +146,7 @@ color: #FFFFFF;
 font-size: 14px;
 padding 300px;
 text-align: left;
+top: 70px;
 `;
 
 const BackArrowPos = styled.div`
@@ -153,6 +154,8 @@ position: absolute;
 bottom: 90%;
 left: 10%;
 `;
+
+const pinkColor = {color: 'pink'};
 
 function HelpPage() {
     return (
@@ -214,13 +217,31 @@ function HelpPage() {
             <img src={line} alt="lines"/> 
         </Line3> 
         <Description>
-           <p> When you press "New Game" from the start menu, the game will begin.<br></br> 
-            <pre>   
-                1) Press the start button <br></br> 
-                2) A path will appear for (this many) seconds, memorize the path <br></br>
-                3) The path will disappear and you will need to use your memory to click on the correct boxes <br></br>
-                4) If you selected the right path, another line of boxes will be added<br></br> 
-                5) Repeat steps 1-4 until you press the wrong path</pre> </p>
+           <p><h1 style={pinkColor}>Welcome to glass bridge!</h1></p><br></br>
+           This is a game that will test your memory on three different difficulty levels (easy-2/medium-3/hard-4)<br></br> 
+           <br></br>Here are the steps: <br></br>
+           <pre> 
+            1) Press "New Game" from the start menu, the game will begin immediately.<br></br> 
+            2) A path will appear for ~2 seconds, memorize the path <br></br>
+            3) The path will disappear and you will need to use your memory to click on the correct boxes <br></br>
+            4) If you selected the right path, two boxes will be added to the top for the next round<br></br> 
+            5) Repeat steps 1-4 until you press the wrong path<br></br>
+            6) The game will restart and you can find your highscore on the homepage
+            <br></br><br></br>
+
+            <br></br><h1 style={pinkColor}>Credits:</h1><br></br>
+            Font: <br></br>
+            "Game of Squids" by Darrell Flood<br></br>
+            LICENSED UNDER ATTRIBUTION 3.0 UNPORTED (CC BY 3.0)<br></br>
+
+            <br></br>Audio: <br></br>
+            "Marimba Samples" by Samulis <br></br>
+            LICENSED UNDER ATTRIBUTION 3.0 UNPORTED (CC BY 3.0)<br></br>
+            "Magic Click" by FlechaBr<br></br>
+            LICENSED UNDER ATTRIBUTION 3.0 UNPORTED (CC BY 3.0)<br></br>
+            "Game Sound Incorrect Organic Violin" by Bertof<br></br>
+            LICENSED UNDER ATTRIBUTION 3.0 UNPORTED (CC BY 3.0)<br></br>
+            </pre>
         </Description> 
         
         </>   
