@@ -43,7 +43,7 @@ function LoginDialog(props) {
   const login = (event) => {
     event.preventDefault();
     setError(null);
-    fetch('https://glass-bridge.herokuapp.com/api/v1/user/signin', {
+    fetch('http://localhost:5000/api/v1/user/signin', {
       method: 'POST',
       body: new URLSearchParams({
         'username': usrname,
@@ -56,9 +56,10 @@ function LoginDialog(props) {
       if (!responseJson.ok) {
         throw responseJson;
       }
-      setCookie('jwt_token', responseJson.token);
+      const token = responseJson["access_token"] || ""
+      setCookie('access_token', token);
       setUser(responseJson.data.user_id);
-      setUserState({...responseJson.data, usrname, auth: true});
+      setUserState({...responseJson.data, username: usrname, auth: true});
       closeDialogs();
     }).catch((e) => {
       setError(e.message);

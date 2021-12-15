@@ -19,8 +19,8 @@ function BackArrow() {
   let history = useHistory();
     
   return (
-      <StyledArrow className="back" onClick={() => history.goBack()}>
-          <MdKeyboardBackspace />
+      <StyledArrow className="back" onClick={() => history.goBack()} size="large">
+          <MdKeyboardBackspace size={32} />
       </StyledArrow>
   );
 }

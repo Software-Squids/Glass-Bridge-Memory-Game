@@ -2,7 +2,7 @@ import {atom} from 'recoil';
 
 export const initialUserState = {
     auth: false, 
-    userName: "",
+    username: "",
     user_id: ""
 }
 

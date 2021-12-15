@@ -21,10 +21,10 @@ function Home() {
   return (
     <StyledHome>
       <TransparentAppBar home/>
-      <h1><SquidText>glass bridge</SquidText></h1>
-      <Link to="/Play"><Button><SquidText>new game</SquidText></Button></Link>
-      <Link to="/Scores"><Button><SquidText>high scores</SquidText></Button></Link>
-      <Link to="/Helper"><Button><SquidText>help</SquidText></Button></Link>
+      <h1 style={{marginTop:0}}><SquidText>glass bridge</SquidText></h1>
+      <Link to="/Play"><Button style={{marginBottom:10}}><SquidText>new game</SquidText></Button></Link>
+      <Link to="/Scores"><Button style={{marginBottom:10}}><SquidText>high scores</SquidText></Button></Link>
+      <Link to="/Helper"><Button style={{marginBottom:10}}><SquidText>help</SquidText></Button></Link>
     </StyledHome>
   );
 }

@@ -29,8 +29,8 @@ function UserButton(props) {
 
   return (
     <>
-    <StyledUser onClick={handleOpen}>
-      {usr === '' ? <MdAccountCircle /> : <MdSwitchAccount />}
+    <StyledUser onClick={handleOpen} size="large">
+      {usr === '' ? <MdAccountCircle size={32} /> : <MdSwitchAccount size={32} />}
     </StyledUser>
     <LoginDialog open={loginOpen}
       setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />

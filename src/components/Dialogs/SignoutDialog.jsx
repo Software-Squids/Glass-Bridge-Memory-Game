@@ -2,8 +2,8 @@ import React from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-
-import { getCookie, authHeader } from './cookieOperations';
+import { useHistory } from 'react-router-dom'
+import { setCookie } from './cookieOperations';
 import { user, userState } from '../../states'
 import { initialUserState } from '../../states/user';
 
@@ -13,8 +13,12 @@ const StyledDialog = styled(Dialog)`
 `
 
 
-function SignoutDialog(props) {
-  const { open, setSignoutOpen } = props;
+function SignoutDialog({
+  open,
+  setSignoutOpen,
+  ...props
+}) {
+  const history = useHistory();
 
   const [usr, setUser] = useRecoilState(user);
   const setUserState = useSetRecoilState(userState)
@@ -24,10 +28,8 @@ function SignoutDialog(props) {
   }
 
   const signout = (event) => {
-    fetch('https://glass-bridge.herokuapp.com/api/v1/user/signout', {
-      method: 'GET',
-      headers: authHeader()
-    }).then((response) => {
+    fetch('http://localhost:5000/api/v1/user/signout')
+      .then((response) => {
       return response.json();
     }).then((responseJson) => {
       if (!responseJson.ok) {
@@ -35,12 +37,18 @@ function SignoutDialog(props) {
       }
       setUser('');
       setUserState(initialUserState)
+      setCookie("access_token", "")
+      // redirect
+      history.push("/")
       closeDialog();
     }).catch((e) => {
       console.log('error:', e)
       // alert(e.message); // temp alert, not actually signing in
       setUser('');
       setUserState(initialUserState)
+      setCookie("access_token", "")
+      // redirect
+      history.push("/")
       closeDialog();
     })
   }

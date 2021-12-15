@@ -11,7 +11,7 @@ function getCookie(name) {
 }
 
 function authHeader() {
-  const user = getCookie('jwt_token')
+  const user = getCookie('access_token')
 
   if (user) {
     return { Authorization: 'Bearer ' + user }

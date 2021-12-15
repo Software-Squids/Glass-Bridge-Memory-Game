@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { rows, turn, round, board } from '../../states';
 import { userState } from '../../states/user';
 import { highscoresState } from '../../states/highscores';
-import { authHeader } from '../../components/Dialogs/cookieOperations';
+// import { authHeader } from '../../components/Dialogs/cookieOperations';
 
 
 const colorFlash = keyframes`
@@ -64,7 +64,8 @@ function Pane({
   name,
   value,
   play,
-  className
+  className,
+  postScore
 }) {
   const row = parseInt(name.split('_')[1]);
   const col = parseInt(name.split('_')[2]);
@@ -130,41 +131,12 @@ function Pane({
     setBoard(currentBoard + 1);
     
     // Submit highscore
-    postHighscore(score)
-  }
-
-  const postHighscore = (score) => {
-    const header = authHeader();
-    console.log('header:', header)
-    fetch("https://glass-bridge.herokuapp.com/api/v1/scoreboard", {
-      method: "POST",
-      body: new URLSearchParams({
-        'username': user.userName,
-        'score': score
-      }),
-      headers: header
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log('data:', data)
-        if(data.ok) {
-          // add to highscores if it is high enough
-          if(highscores.length < 10 || score > highscores[9]) {
-            let newHighscores = [...highscores, [score, user.userName]]
-            let newSorted = newHighscores.sort((a, b) => b[0] - a[0])
-            newHighscores.pop();
-            setHighscores(newSorted)
-          }
-        }
-      })
-      .catch(err => {
-        console.log('error posting hs:', err)
-      })
+    postScore(score)
   }
 
   const calculateScore = () => {
     const BASE_BLOCKS = 8
-    let score = currentRound * BASE_BLOCKS + currentTurn;
+    let score = (currentRound-1) * BASE_BLOCKS + (currentTurn-1);
     for(let i=1; i<currentRound; i++) {
       score += (1*i)
     }

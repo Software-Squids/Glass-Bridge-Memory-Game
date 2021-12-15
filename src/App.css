@@ -13,9 +13,9 @@
   }
 }
 
-.App-header {
+.app-main {
   background-color: black;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
