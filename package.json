@@ -1,9 +1,12 @@
 {
   "name": "glass-bridge-memory-game",
   "version": "0.1.0",
+  "homepage": "https://Software-Squids.github.io/Glass-Bridge-Memory-Game",
   "license": "MIT",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -61,5 +64,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
